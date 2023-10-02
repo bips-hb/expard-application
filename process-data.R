@@ -4,11 +4,14 @@ library(lubridate)
 library(Matrix)
 library(ggvenn)
 library(expard)
-
+library(stringr)
 
 # read in penicillin data
 diag_pen <- readr::read_rds("penicillin/diag_pen.rds")
 pres_pen <- readr::read_rds("penicillin/pres_pen.rds")
+
+# filter diagnosis type that end with an h (from Oliver)
+diag_pen <- diag_pen %>% filter(str_sub(diag_type, -1) == "H")
 
 # ------------------------------------------------------------------------------
 # Determine quarter and year
@@ -18,8 +21,13 @@ pres_pen <- readr::read_rds("penicillin/pres_pen.rds")
 diag_pen$quarter <- lubridate::quarter(diag_pen$hosp_date)
 diag_pen$year    <- lubridate::year(diag_pen$hosp_date)
 
+#'filter out year before 2003 (sometimes happens with prescription. 
+#'For penicillin, this just happens once)
+
 pres_pen$quarter <- lubridate::quarter(pres_pen$del_dat)
 pres_pen$year    <- lubridate::year(pres_pen$del_dat)
+
+pres_pen <- pres_pen %>% filter(year >= 2004) 
 
 # returns a time point, where Q1 2004 is time point 1 and 
 # Q4 in 2017 is time point 56
@@ -81,39 +89,51 @@ drug_exposures[indices] <- 1
 indices <- cbind(diag_pen$patient_index, diag_pen$time)
 adr_history[indices] <- 1
 
+pair <- list(drug_history = drug_exposures, adr_history = adr_history)
+
+#readr::write_rds(x = pair, 
+#                 "processed-data-penicillin.rds")
+
+t2x2 <- expard::create2x2table(pair)
+
+library(pvm)
+
+pvm::ROR(t2x2$a, t2x2$b, t2x2$c, t2x2$d)
+pvm::fisherExactTest(t2x2$a, t2x2$b, t2x2$c, t2x2$d)
+
 # ------------------------------------------------------------------------------
 # Apply expard
 # ------------------------------------------------------------------------------
-res <- expard::fit_all_models(pair = list(drug_history = drug_exposures, adr_history = adr_history), 
-                              models = c(
-                                'no-association',
-                                'current-use', 
-                                'past-use'#, 
-                                #'decaying'
-                              ), 
-                              maxiter = 20)
-
-
-models = c(
-  'no-association',
-  'current-use',
-  'past-use',
-  'withdrawal',
-  'delayed',
-  'decaying',
-  'delayed+decaying',
-  'long-term'
-)
-
-
-#drug_exposures[pres_pen$patient_index, pres_pen$time] <- 1
-#drug_exposures[c(1,2),c(1,2)] <- 1
-
-#return_time_point(2005, 4)
-
-#temp <- data.frame(expand.grid(
-#  quarter = 1:4,
-#  year = 2004:2017 
-#))
-
-#temp <- temp %>% mutate(time_point = return_time_point(year, quarter))
+#' res <- expard::fit_all_models(pair = list(drug_history = drug_exposures, adr_history = adr_history), 
+#'                               models = c(
+#'                                 'no-association',
+#'                                 'current-use', 
+#'                                 'past-use'#, 
+#'                                 #'decaying'
+#'                               ), 
+#'                               maxiter = 20)
+#' 
+#' 
+#' models = c(
+#'   'no-association',
+#'   'current-use',
+#'   'past-use',
+#'   'withdrawal',
+#'   'delayed',
+#'   'decaying',
+#'   'delayed+decaying',
+#'   'long-term'
+#' )
+#' 
+#' 
+#' #drug_exposures[pres_pen$patient_index, pres_pen$time] <- 1
+#' #drug_exposures[c(1,2),c(1,2)] <- 1
+#' 
+#' #return_time_point(2005, 4)
+#' 
+#' #temp <- data.frame(expand.grid(
+#' #  quarter = 1:4,
+#' #  year = 2004:2017 
+#' #))
+#' 
+#' #temp <- temp %>% mutate(time_point = return_time_point(year, quarter))
