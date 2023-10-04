@@ -70,14 +70,8 @@ adr_history    <- matrix(0, nrow = n_patients, ncol = n_timepoints)
 # associate each patient with an index -----------------------------------------
 
 # returns the unique index associated with a specific idnum
-return_patient_index <- function(idnums, all_patients) {
-  sapply(idnums, function(idnum) {
-  which(all_patients == idnum)
-})}
-
-# add the indices of the patients
-diag_pen$patient_index <- return_patient_index(diag_pen$idnum, all_patients) #%>% mutate(patient_index = which(all_patients == idnum))
-pres_pen$patient_index <- return_patient_index(pres_pen$idnum, all_patients) 
+diag_pen$patient_index <- match(diag_pen$idnum, all_patients) 
+pres_pen$patient_index <- match(pres_pen$idnum, all_patients)
 
 # fill in the drug exposure matrix
 indices <- cbind(pres_pen$patient_index, pres_pen$time)
