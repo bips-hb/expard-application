@@ -24,4 +24,4 @@ res <- expard::fit_all_models(pair = pair,
                               models = models, 
                               maxiter = 10000)
 
-readr::write_rds("results/fit-penicillin.rds")
+readr::write_rds(res, "results/fit-penicillin.rds")
