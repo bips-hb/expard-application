@@ -2,7 +2,7 @@ library(expard)
 library(readr)
 
 # read in data processed in 'process-data'
-pair <- readr::read_rds("penicillin/processed-data-penicillin.rds")
+pair <- readr::read_rds("results/processed_data_pen.rds")
 
 t2x2 <- expard::create2x2table(pair)
 

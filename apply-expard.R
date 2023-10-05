@@ -3,7 +3,7 @@ library(expard)
 
 
 # read in data processed in 'process-data'
-pair <- readr::read_rds("penicillin/processed-data-penicillin.rds")
+pair <- readr::read_rds("results/processed_data_pen.rds")
 
 # ------------------------------------------------------------------------------
 # Apply expard
@@ -24,4 +24,4 @@ res <- expard::fit_all_models(pair = pair,
                               models = models, 
                               maxiter = 10000)
 
-readr::write_rds(res, "results/fit-penicillin.rds")
+readr::write_rds(res, "results/fit_penicillin.rds")
