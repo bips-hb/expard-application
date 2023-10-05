@@ -91,8 +91,40 @@ process_data <- function(filename_diag, filename_pres, filename_out) {
   return(pair)
 }
 
+################################################
+# Going over all drug-ADR pairs we consider
+################################################
+
+# 1. penicillin + anaph. shock 
 process_data(
   filename_diag = "data/diag_pen.rds",
   filename_pres = "data/pres_pen.rds",
-  filename_out = "results/processed_data_pen.rds"
+  filename_out = "results/data_penicillin_shock.rds"
 )
+
+# 2. DOACs + Bleeding
+process_data(
+  filename_diag = "data/diag_bleeding.rds",
+  filename_pres = "data/pres_doac.rds",
+  filename_out = "results/data_doacs_bleeding.rds"
+)
+
+# 3. Antidiabetics + Bleeding
+process_data(
+  filename_diag = "data/diag_bleeding.rds",
+  filename_pres = "data/pres_diab.rds",
+  filename_out = "results/data_diabetics_bleeding.rds"
+)
+
+# 4. Psychotics + Type 2 Diabetes
+process_data(
+  filename_diag = "data/diag_t2d_hosp.rds",
+  filename_pres = "data/pres_psych.rds",
+  filename_out = "results/data_psychotics_type2diabetes.rds"
+)
+
+# Resulting filenames: 
+# "results/data_penicillin_shock.rds"
+# "results/data_doacs_bleeding.rds"
+# "results/data_diabetics_bleeding.rds"
+# "results/data_psychotics_type2diabetes.rds"
