@@ -38,7 +38,7 @@ process_data <- function(filename_diag, filename_pres, filename_out) {
   #'filter out year before 2003 (sometimes happens with prescription. 
   #'For penicillin, this just happens once)
   pres <- pres %>% filter(year >= 2004) 
-  
+  diag <- diag %>% filter(year >= 2004)
   
   # add the time points to the data frames
   diag <- diag %>% mutate(time = return_time_point(year, quarter))
