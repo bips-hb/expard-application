@@ -97,7 +97,7 @@ process_data <- function(filename_diag, filename_pres, filename_out) {
 
 # 1. penicillin + anaph. shock 
 process_data(
-  filename_diag = "data/diag_pen.rds",
+  filename_diag = "data/diag_pen_all.rds",
   filename_pres = "data/pres_pen.rds",
   filename_out = "results/data_penicillin_shock.rds"
 )
@@ -116,11 +116,32 @@ process_data(
   filename_out = "results/data_diabetics_bleeding.rds"
 )
 
-# 4. Psychotics + Type 2 Diabetes
+# 4. All Psychotics + Type 2 Diabetes
 process_data(
   filename_diag = "data/diag_t2d_hosp.rds",
   filename_pres = "data/pres_psych.rds",
   filename_out = "results/data_psychotics_type2diabetes.rds"
+)
+
+# 5. Psychotics CLO + Type 2 Diabetes
+process_data(
+  filename_diag = "data/diag_t2d_hosp.rds",
+  filename_pres = "data/pres_psych_clo.rds",
+  filename_out = "results/data_psychotics_clo_type2diabetes.rds"
+)
+
+# 6. Psychotics OLA + Type 2 Diabetes
+process_data(
+  filename_diag = "data/diag_t2d_hosp.rds",
+  filename_pres = "data/pres_psych_ola.rds",
+  filename_out = "results/data_psychotics_ola_type2diabetes.rds"
+)
+
+# 7. Psychotics QUE + Type 2 Diabetes
+process_data(
+  filename_diag = "data/diag_t2d_hosp.rds",
+  filename_pres = "data/pres_psych_que.rds",
+  filename_out = "results/data_psychotics_que_type2diabetes.rds"
 )
 
 # Resulting filenames: 
@@ -128,3 +149,6 @@ process_data(
 # "results/data_doacs_bleeding.rds"
 # "results/data_diabetics_bleeding.rds"
 # "results/data_psychotics_type2diabetes.rds"
+# "results/data_psychotics_clo_type2diabetes.rds"
+# "results/data_psychotics_ola_type2diabetes.rds"
+# "results/data_psychotics_que_type2diabetes.rds"
