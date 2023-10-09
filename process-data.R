@@ -114,12 +114,12 @@ process_data <- function(filename_diag,
     time_end <- as.integer(insurants[i, 'time_end'])
     
     # add the NAs in the beginning if needed
-    if (time_begin >= 1) { 
+    if (time_begin > 1) { 
       NAs[1:(time_begin-1)] <- TRUE
     }
     
     # add the NAs in the end if needed
-    if (time_end <= n_timepoints) { 
+    if (time_end < n_timepoints) { 
       NAs[(time_end+1):n_timepoints] <- TRUE  
     }
     
