@@ -139,6 +139,8 @@ process_data <- function(filename_diag,
 # Going over all drug-ADR pairs we consider
 ################################################
 
+cat("Processing 'penicillin + anaph. shock' (1 / 7)...\n")
+
 # 1. penicillin + anaph. shock 
 process_data(
   filename_diag = "data/diag_pen.rds",
@@ -146,6 +148,9 @@ process_data(
   filename_out = "results/data_penicillin_shock.rds", 
   insurants = insurants
 )
+
+cat("DONE Processing 'penicillin + anaph. shock' (1 / 7)\n")
+cat("Processing 'DOACs + bleeding' (2 / 7)...\n")
 
 # 2. DOACs + Bleeding
 process_data(
@@ -155,6 +160,9 @@ process_data(
   insurants = insurants
 )
 
+cat("DONE Processing 'DOACs + bleeding' (2 / 7)\n")
+cat("Processing 'Antidiabetics + bleeding' (3 / 7)...\n")
+
 # 3. Antidiabetics + Bleeding
 process_data(
   filename_diag = "data/diag_bleeding.rds",
@@ -162,6 +170,9 @@ process_data(
   filename_out = "results/data_diabetics_bleeding.rds", 
   insurants = insurants
 )
+
+cat("DONE Processing 'Antidiabetics + bleeding' (3 / 7)\n")
+cat("Processing 'All antipsychotics + Type II diabetes' (4 / 7)...\n")
 
 # 4. All Psychotics + Type 2 Diabetes
 process_data(
@@ -171,6 +182,9 @@ process_data(
   insurants = insurants
 )
 
+cat("DONE Processing 'All antipsychotics + Type II diabetes' (4 / 7)\n")
+cat("Processing 'Antipsychotic CLO + Type II diabetes' (5 / 7)...\n")
+
 # 5. Psychotics CLO + Type 2 Diabetes
 process_data(
   filename_diag = "data/diag_t2d_hosp.rds",
@@ -178,6 +192,9 @@ process_data(
   filename_out = "results/data_psychotics_clo_type2diabetes.rds", 
   insurants = insurants
 )
+
+cat("DONE Processing 'Antipsychotic CLO + Type II diabetes' (5 / 7)\n")
+cat("Processing 'Antipsychotic OLA + Type II diabetes' (6 / 7)...\n")
 
 # 6. Psychotics OLA + Type 2 Diabetes
 process_data(
@@ -187,6 +204,9 @@ process_data(
   insurants = insurants
 )
 
+cat("DONE Processing 'Antipsychotic OLA + Type II diabetes' (6 / 7)\n")
+cat("Processing 'Antipsychotic QUE + Type II diabetes' (7 / 7)...\n")
+
 # 7. Psychotics QUE + Type 2 Diabetes
 process_data(
   filename_diag = "data/diag_t2d_hosp.rds",
@@ -194,6 +214,8 @@ process_data(
   filename_out = "results/data_psychotics_que_type2diabetes.rds", 
   insurants = insurants
 )
+
+cat("DONE PROCESSING DATA\n")
 
 # Resulting filenames: 
 # "results/data_penicillin_shock.rds"
