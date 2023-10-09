@@ -4,7 +4,7 @@ library(readr)
 # Reads in the insurants data and determines for which time points they 
 # were insured
 
-data <- readr::read_rds("data/insurant-hkk.rds")
+data <- readr::read_rds("data/insurant_hkk.rds")
 
 # returns a time point, where Q1 2004 is time point 1 and 
 # Q4 in 2017 is time point 56

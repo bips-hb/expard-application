@@ -7,7 +7,7 @@ library(expard)
 library(stringr)
 
 # read in the data for the insurants. See script 'process-insurant-data.R'
-insurants <- readr::read_rds("data/insurant-hkk.rds")
+insurants <- readr::read_rds("data/processed-insurant-data-hkk.rds")
 
 # returns a time point, where Q1 2004 is time point 1 and 
 # Q4 in 2017 is time point 56
@@ -141,8 +141,8 @@ process_data <- function(filename_diag,
 
 # 1. penicillin + anaph. shock 
 process_data(
-  filename_diag = "data/diag_pen_all.rds",
-  filename_pres = "data/pres_pen.rds",
+  filename_diag = "data/diag_pen.rds",
+  filename_pres = "data/pres_pen_all.rds",
   filename_out = "results/data_penicillin_shock.rds", 
   insurants = insurants
 )
