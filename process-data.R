@@ -23,6 +23,11 @@ process_data <- function(filename_diag,
                          filename_out, 
                          insurants) {
   
+  if (file.exists(filename_out)) { 
+    warning("Output file already exists. Data is not processed again")
+    return(NULL)
+  }
+  
   # read in penicillin data
   diag <- readr::read_rds(filename_diag)
   pres <- readr::read_rds(filename_pres)
