@@ -18,6 +18,7 @@ data_filenames <-
 
 # go over all files 
 res <- lapply(data_filenames, function(filename) {
+  cat(sprintf("Processing file %s\n", filename))
   output_filename <- str_replace(filename, "data_", "fit_")
   if (file.exists(output_filename)) { 
     warning(sprintf("%s already exists\n", output_filename))
