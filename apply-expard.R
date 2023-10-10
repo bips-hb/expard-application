@@ -2,6 +2,9 @@ library(readr)
 library(expard)
 library(stringr)
 
+# number of cores
+MC.CORES <- 40
+
 # all the result files
 data_filenames <-
   c(
@@ -44,7 +47,8 @@ res <- lapply(data_filenames, function(filename) {
   
   res <- expard::fit_all_models(pair = pair,
                                 models = models, 
-                                maxiter = 10000)
+                                maxiter = 10000, 
+                                mc.cores = MC.CORES)
   
   readr::write_rds(res, output_filename)
 })
