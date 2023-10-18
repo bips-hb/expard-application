@@ -30,5 +30,5 @@ data <- data %>% mutate(
   time_end = return_time_point(year_end, quarter_end) 
 )
 
-readr::write_rds(data, "data/processed-insurant-data-hkk.rds")
+readr::write_rds(data, "data/processed-insurant-data.rds")
 

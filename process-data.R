@@ -7,7 +7,7 @@ library(expard)
 library(stringr)
 
 # read in the data for the insurants. See script 'process-insurant-data.R'
-insurants <- readr::read_rds("data/processed-insurant-data-hkk.rds")
+insurants <- readr::read_rds("data/processed-insurant-data.rds")
 
 # returns a time point, where Q1 2004 is time point 1 and 
 # Q4 in 2017 is time point 56
