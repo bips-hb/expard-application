@@ -3,7 +3,7 @@ library(expard)
 library(stringr)
 
 # number of cores
-MC.CORES <- 40
+MC.CORES <- 30
 
 # all the result files
 data_filenames <-
