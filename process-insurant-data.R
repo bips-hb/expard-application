@@ -1,6 +1,8 @@
 library(dplyr)
 library(readr)
 
+source("init.R")
+
 # Reads in the insurants data and determines for which time points they 
 # were insured
 

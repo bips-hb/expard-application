@@ -6,6 +6,8 @@ library(Matrix)
 library(expard)
 library(stringr)
 
+source("init.R")
+
 # read in the data for the insurants. See script 'process-insurant-data.R'
 insurants <- readr::read_rds("data/processed-insurant-data.rds")
 
@@ -21,7 +23,8 @@ return_time_point <- function(year, quarter) {
 process_data <- function(filename_diag, 
                          filename_pres, 
                          filename_out, 
-                         insurants) {
+                         insurants, 
+                         krankenkasse = KRANKENKASSEN) {
   
   if (file.exists(filename_out)) { 
     warning("Output file already exists. Data is not processed again")
@@ -34,6 +37,10 @@ process_data <- function(filename_diag,
   
   # filter diagnosis type that end with an h (from Oliver)
   diag <- diag %>% filter(str_sub(diag_type, -1) == "H")
+  
+  # filter out insurants that are not a member of the Krankenkassen given above
+  diag <- diag %>% filter(kk %in% krankenkasse)
+  pres <- pres %>% filter(kk %in% krankenkasse)
   
   # ------------------------------------------------------------------------------
   # Determine quarter and year

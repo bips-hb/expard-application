@@ -2,8 +2,7 @@ library(readr)
 library(expard)
 library(stringr)
 
-# number of cores
-MC.CORES <- 1
+source("init.R")
 
 # all the result files
 data_filenames <-
