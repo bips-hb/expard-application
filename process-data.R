@@ -98,7 +98,7 @@ process_data <- function(filename_diag,
   
   # which patients were never exposed and never suffered the ADR: 
   ind_never_drug_and_ADR <- which(is.na(insurants$patient_index))
-  zero_patients <- length(ind_never_drug_and_ADR)
+  zero_patients <- nrow(insurants) - n_patients
   zero_timepoints <- sum(insurants$duration[ind_never_drug_and_ADR])
   
   # fill in the drug exposure matrix
