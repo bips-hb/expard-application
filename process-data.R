@@ -95,6 +95,12 @@ process_data <- function(filename_diag,
   pres$patient_index <- match(pres$idnum, all_patients)
   insurants$patient_index <- match(insurants$idnum, all_patients)
   
+  # which patients were never exposed and never suffered the ADR: 
+  ind_never_drug_and_ADR <- which(is.na(insurants$patient_index))
+  insurants$duration <- insurants$time_end - insurants$time_begin + 1
+  zero_patients <- length(ind_never_drug_and_ADR)
+  zero_timepoints <- sum(insurants$duration[ind_never_drug_and_ADR])
+  
   # fill in the drug exposure matrix
   indices <- cbind(pres$patient_index, pres$time)
   drug_exposures[indices] <- 1
@@ -140,7 +146,9 @@ process_data <- function(filename_diag,
     adr_history[k, NAs] <- NA
   }
   
-  pair <- list(drug_history = drug_exposures, adr_history = adr_history)
+  pair <- list(drug_history = drug_exposures, adr_history = adr_history,
+               zero_patients = zero_patients,
+               zero_timepoints = zero_timepoints)
   
   readr::write_rds(x = pair, filename_out)
   
@@ -150,6 +158,10 @@ process_data <- function(filename_diag,
 ################################################
 # Going over all drug-ADR pairs we consider
 ################################################
+
+filename_diag = "data/diag_pen.rds"
+filename_pres = "data/pres_pen.rds"
+filename_out = "results/try.rds"
 
 cat("Processing 'penicillin + anaph. shock' (1 / 6)...\n")
 

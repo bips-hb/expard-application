@@ -37,7 +37,7 @@ res <- lapply(data_filenames, function(filename) {
   cat(sprintf("Applying expard to %s...\n", filename))
   
   # read in data processed in 'process-data'
-  pair <- readr::read_rds(filename)
+  data <- readr::read_rds(filename)
   
   models <- c(
     'no-association',
@@ -50,8 +50,11 @@ res <- lapply(data_filenames, function(filename) {
     'long-term'
   )
   
-  res <- expard::fit_all_models(pair = pair,
+  res <- expard::fit_all_models(pair = list(drug_history = data$drug_history,
+                                            adr_history = data$adr_history),
                                 models = models, 
+                                zero_patients = data$zero_patients,
+                                zero_timepoints = data$zero_timepoints,
                                 maxiter = 10000, 
                                 mc.cores = MC.CORES)
   
