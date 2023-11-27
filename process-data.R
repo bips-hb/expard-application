@@ -94,10 +94,10 @@ process_data <- function(filename_diag,
   diag$patient_index <- match(diag$idnum, all_patients) 
   pres$patient_index <- match(pres$idnum, all_patients)
   insurants$patient_index <- match(insurants$idnum, all_patients)
+  insurants$duration <- insurants$time_end - insurants$time_begin + 1
   
   # which patients were never exposed and never suffered the ADR: 
   ind_never_drug_and_ADR <- which(is.na(insurants$patient_index))
-  insurants$duration <- insurants$time_end - insurants$time_begin + 1
   zero_patients <- length(ind_never_drug_and_ADR)
   zero_timepoints <- sum(insurants$duration[ind_never_drug_and_ADR])
   
@@ -116,7 +116,7 @@ process_data <- function(filename_diag,
   
   # filter out all patients that were insured the whole time
   insurants <- insurants %>% filter(time_begin > 1 | time_end < n_timepoints)
-  
+
   # go over all patients and create a vector that keeps track of where there 
   # should be an NA and where not
   for (i in 1:length(insurants)) { 
