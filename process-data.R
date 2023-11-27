@@ -168,7 +168,7 @@ cat("Processing 'penicillin + anaph. shock' (1 / 6)...\n")
 # 1. penicillin + anaph. shock 
 process_data(
   filename_diag = "data/diag_anaphylaxis_hosp.rds",
-  filename_pres = "data/pres_pen_all.rds",
+  filename_pres = "data/pres_pen.rds",
   filename_out = "results/data_penicillin_shock.rds", 
   insurants = insurants
 )
