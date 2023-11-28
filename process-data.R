@@ -159,130 +159,116 @@ process_data <- function(filename_diag,
 # Going over all drug-ADR pairs we consider
 ################################################
 
-filename_diag = "data/diag_pen.rds"
-filename_pres = "data/pres_pen.rds"
-filename_out = "results/try.rds"
 
-cat("Processing 'penicillin + anaph. shock' (1 / 6)...\n")
-
-# 1. penicillin + anaph. shock 
+# 1. penicillin + anaph. shock ---------------------------
+cat("Processing 'penicillin + anaph. shock' (1 / 11)...\n")
 process_data(
   filename_diag = "data/diag_anaphylaxis_hosp.rds",
   filename_pres = "data/pres_pen.rds",
   filename_out = "results/data_penicillin_shock.rds", 
   insurants = insurants
 )
+cat("DONE Processing 'penicillin + anaph. shock' (1 / 11)\n")
 
-cat("DONE Processing 'penicillin + anaph. shock' (1 / 6)\n")
-
-# 2. DOACs + Bleeding
-cat("Processing 'DOACs + bleeding' (2 / 6)...\n")
+# 2. DOACs + Bleeding ------------------------------------
+cat("Processing 'DOACs + bleeding' (2 / 11)...\n")
 process_data(
   filename_diag = "data/diag_bleeding.rds",
   filename_pres = "data/pres_doac.rds",
   filename_out = "results/data_doacs_bleeding.rds", 
   insurants = insurants
 )
-cat("DONE Processing 'DOACs + bleeding' (2 / 6)\n")
+cat("DONE Processing 'DOACs + bleeding' (2 / 11)\n")
 
-# 3. NSAIDS and heart failure
-
-cat("Processing 'NSAIDs + Heart Failure ' (3 / 6)...\n")
+# 3. NSAIDS and heart failure --------------------------
+cat("Processing 'NSAIDs + Heart Failure ' (3 / 11)...\n")
 process_data(
   filename_diag = "data/diag_hf.rds",
   filename_pres = "data/pres_nsaid.rds",
   filename_out = "results/data_nsaids_hf.rds", 
   insurants = insurants
 )
-cat("DONE Processing 'NSAIDs + Heart Failure' (3 / 6)\n")
+cat("DONE Processing 'NSAIDs + Heart Failure' (3 / 11)\n")
 
-# 4. oral contraceptives + anaphylactic shock (negative control)
-
-cat("Processing 'oral contraceptives + anaphylactic shock' (4 / 6)...\n")
+# 4. oral contraceptives + anaphylactic shock (negative control) --------
+cat("Processing 'oral contraceptives + anaphylactic shock' (4 / 11)...\n")
 process_data(
   filename_diag = "data/diag_anaphylaxis_hosp.rds",
   filename_pres = "data/pres_oc.rds",
   filename_out = "results/data_oc_shock.rds", 
   insurants = insurants
 )
-cat("DONE Processing 'oral contraceptives + anaphylactic shock' (4 / 6)\n")
+cat("DONE Processing 'oral contraceptives + anaphylactic shock' (4 / 11)\n")
 
-# 5. Antibiotics + bleeding (negative control)
-
-cat("Processing 'Antibiotics + bleeding' (5 / 6)...\n")
+# 5. Antibiotics + bleeding (negative control) ------------------------
+cat("Processing 'Antibiotics + bleeding' (5 / 11)...\n")
 process_data(
   filename_diag = "data/diag_bleeding.rds",
   filename_pres = "data/pres_antibiotics.rds",
   filename_out = "results/data_antibiotics_bleeding.rds", 
   insurants = insurants
 )
-cat("DONE Processing 'Antibiotics + bleeding' (5 / 6)\n")
+cat("DONE Processing 'Antibiotics + bleeding' (5 / 11)\n")
 
-# 6. Antithyroid drug (ATC) + bleeding (negative control)
-
-cat("Processing 'Antithyroid drug (ATC) + bleeding' (6 / 6)...\n")
+# 6. Antithyroid drug (ATC) + bleeding (negative control) --------------
+cat("Processing 'Antithyroid drug (ATC) + bleeding' (6 / 11)...\n")
 process_data(
   filename_diag = "data/diag_bleeding.rds",
   filename_pres = "data/pres_atd.rds",
   filename_out = "results/data_atd_bleeding.rds", 
   insurants = insurants
 )
-cat("DONE Processing 'Antithyroid drug (ATC) + bleeding' (6 / 6)\n")
+cat("DONE Processing 'Antithyroid drug (ATC) + bleeding' (6 / 11)\n")
+
+# 3. Antidiabetics + Bleeding ------------------------------
+cat("Processing 'Antidiabetics + bleeding' (7 / 11)...\n")
+process_data(
+  filename_diag = "data/diag_bleeding.rds",
+  filename_pres = "data/pres_diab.rds",
+  filename_out = "results/data_diabetics_bleeding.rds",
+  insurants = insurants
+)
+cat("DONE Processing 'Antidiabetics + bleeding' (7 / 11)\n")
 
 
-#cat("Processing 'Antidiabetics + bleeding' (3 / 7)...\n")
+# 4. All Psychotics + Type 2 Diabetes
+cat("Processing 'All antipsychotics + Type II diabetes' (8 / 11)...\n") ---
+process_data(
+  filename_diag = "data/diag_t2d_hosp.rds",
+  filename_pres = "data/pres_psych.rds",
+  filename_out = "results/data_psychotics_type2diabetes.rds",
+  insurants = insurants
+)
+cat("DONE Processing 'All antipsychotics + Type II diabetes' (8 / 11)\n")
 
-# 3. Antidiabetics + Bleeding
-# process_data(
-#   filename_diag = "data/diag_bleeding.rds",
-#   filename_pres = "data/pres_diab.rds",
-#   filename_out = "results/data_diabetics_bleeding.rds", 
-#   insurants = insurants
-# )
+# 5. Psychotics CLO + Type 2 Diabetes
+cat("Processing 'Antipsychotic CLO + Type II diabetes' (9 / 11)...\n")
+process_data(
+  filename_diag = "data/diag_t2d_hosp.rds",
+  filename_pres = "data/pres_psych_clo.rds",
+  filename_out = "results/data_psychotics_clo_type2diabetes.rds",
+  insurants = insurants
+)
+cat("DONE Processing 'Antipsychotic CLO + Type II diabetes' (9 / 11)\n")
 
-# cat("DONE Processing 'Antidiabetics + bleeding' (3 / 7)\n")
-# cat("Processing 'All antipsychotics + Type II diabetes' (4 / 7)...\n")
-# 
-# # 4. All Psychotics + Type 2 Diabetes
-# process_data(
-#   filename_diag = "data/diag_t2d_hosp.rds",
-#   filename_pres = "data/pres_psych.rds",
-#   filename_out = "results/data_psychotics_type2diabetes.rds", 
-#   insurants = insurants
-# )
-# 
-# cat("DONE Processing 'All antipsychotics + Type II diabetes' (4 / 7)\n")
-# cat("Processing 'Antipsychotic CLO + Type II diabetes' (5 / 7)...\n")
-# 
-# # 5. Psychotics CLO + Type 2 Diabetes
-# process_data(
-#   filename_diag = "data/diag_t2d_hosp.rds",
-#   filename_pres = "data/pres_psych_clo.rds",
-#   filename_out = "results/data_psychotics_clo_type2diabetes.rds", 
-#   insurants = insurants
-# )
-# 
-# cat("DONE Processing 'Antipsychotic CLO + Type II diabetes' (5 / 7)\n")
-# cat("Processing 'Antipsychotic OLA + Type II diabetes' (6 / 7)...\n")
-# 
-# # 6. Psychotics OLA + Type 2 Diabetes
-# process_data(
-#   filename_diag = "data/diag_t2d_hosp.rds",
-#   filename_pres = "data/pres_psych_ola.rds",
-#   filename_out = "results/data_psychotics_ola_type2diabetes.rds", 
-#   insurants = insurants
-# )
-# 
-# cat("DONE Processing 'Antipsychotic OLA + Type II diabetes' (6 / 7)\n")
-# cat("Processing 'Antipsychotic QUE + Type II diabetes' (7 / 7)...\n")
-# 
-# # 7. Psychotics QUE + Type 2 Diabetes
-# process_data(
-#   filename_diag = "data/diag_t2d_hosp.rds",
-#   filename_pres = "data/pres_psych_que.rds",
-#   filename_out = "results/data_psychotics_que_type2diabetes.rds", 
-#   insurants = insurants
-# )
+# 6. Psychotics OLA + Type 2 Diabetes
+cat("Processing 'Antipsychotic OLA + Type II diabetes' (10 / 11)...\n")
+process_data(
+  filename_diag = "data/diag_t2d_hosp.rds",
+  filename_pres = "data/pres_psych_ola.rds",
+  filename_out = "results/data_psychotics_ola_type2diabetes.rds",
+  insurants = insurants
+)
+cat("DONE Processing 'Antipsychotic OLA + Type II diabetes' (10 / 11)\n")
+
+# 7. Psychotics QUE + Type 2 Diabetes
+cat("Processing 'Antipsychotic QUE + Type II diabetes' (1 / 11)...\n")
+process_data(
+  filename_diag = "data/diag_t2d_hosp.rds",
+  filename_pres = "data/pres_psych_que.rds",
+  filename_out = "results/data_psychotics_que_type2diabetes.rds",
+  insurants = insurants
+)
 
 cat("DONE PROCESSING DATA\n")
 

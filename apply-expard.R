@@ -11,16 +11,13 @@ data_filenames <-
     "results/data_nsaids_hf.rds", 
     "results/data_oc_shock.rds", 
     "results/data_antibiotics_bleeding.rds",  
-    "results/data_atd_bleeding.rds")
-  # c(
-  #   "results/data_penicillin_shock.rds",
-  #   "results/data_doacs_bleeding.rds",
-  #   "results/data_diabetics_bleeding.rds",
-  #   "results/data_psychotics_type2diabetes.rds",
-  #   "results/data_psychotics_clo_type2diabetes.rds",
-  #   "results/data_psychotics_ola_type2diabetes.rds",
-  #   "results/data_psychotics_que_type2diabetes.rds"
-  # )
+    "results/data_atd_bleeding.rds",
+    "results/data_diabetics_bleeding.rds",
+    "results/data_psychotics_type2diabetes.rds",
+    "results/data_psychotics_clo_type2diabetes.rds",
+    "results/data_psychotics_ola_type2diabetes.rds",
+    "results/data_psychotics_que_type2diabetes.rds"
+  )
 
 # output_filenames <- str_replace(data_filenames, "data_", "fit_")
 
