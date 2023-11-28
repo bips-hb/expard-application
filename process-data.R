@@ -232,7 +232,7 @@ cat("DONE Processing 'Antidiabetics + bleeding' (7 / 11)\n")
 
 
 # 4. All Psychotics + Type 2 Diabetes
-cat("Processing 'All antipsychotics + Type II diabetes' (8 / 11)...\n") ---
+cat("Processing 'All antipsychotics + Type II diabetes' (8 / 11)...\n") # ---
 process_data(
   filename_diag = "data/diag_t2d_hosp.rds",
   filename_pres = "data/pres_psych.rds",
