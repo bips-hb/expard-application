@@ -22,11 +22,11 @@ figure_filenames <- str_replace(figure_filenames, ".rds", ".pdf")
 
 titles <- c(
   "penicillin and anaphylaxis",
-  "DOACs and bleeding",
+  "DOACs and GI bleeding",
   "NSAIDs and heart failure",
   "oral contraceptives and anaphylaxis",
-  "antibiotics and bleeding",
-  "ATDs and bleeding"
+  "antibiotics and GI bleeding",
+  "ATDs and GI bleeding"
 )
 
 n_files <- length(fit_filenames)

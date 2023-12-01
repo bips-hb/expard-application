@@ -174,7 +174,7 @@ ggsave("results/figure_penicillin_shock.pdf", p, width = 5, height = 5)
 i = 2
 plot_fit_local(i, exclude_null = FALSE)
 plot_fit_local(i, exclude_null = TRUE)
-plot_fit_past(i, add_current_use = T, title = "DOACs and bleeding")
+plot_fit_past(i, add_current_use = T, title = "DOACs and GI bleeding")
 
 
 fit <- get_fit(i)
@@ -182,13 +182,13 @@ min(fit$BIC)
 r = fit %>% filter(model == 'no-association')
 r$BIC
 p <- expard::plot_fit(fit = get_fit(i), 
-                      title = "DOACs and bleeding", 
+                      title = "DOACs and GI bleeding", 
                       y_range = c(224500, 226000)
 )
 
 ggsave("results/figure_doacs_bleeding.pdf", p, width = 5, height = 5)
 
-p <- plot_fit_past(i, add_current_use = T, title = "DOACs and bleeding")
+p <- plot_fit_past(i, add_current_use = T, title = "DOACs and GI bleeding")
 
 ggsave("results/past_figure_doacs_bleeding.pdf", p, width = 4.5, height = 4)
 
@@ -200,12 +200,12 @@ plot_fit_local(i, exclude_null = FALSE) # note that no association is more likel
 plot_fit_past(i, add_current_use = T) # long term effect? just time
 
 p <- expard::plot_fit(fit = get_fit(i), 
-                      title = "antibiotics and bleeding"
+                      title = "antibiotics and GI bleeding"
 )
 
 ggsave("results/figure_antibiotics_bleeding.pdf", p, width = 5, height = 5)
 
-p <- plot_fit_past(i, add_current_use = T, title = "antibiotics and bleeding")
+p <- plot_fit_past(i, add_current_use = T, title = "antibiotics and GI bleeding")
 
 ggsave("results/past_figure_antibiotics_bleeding.pdf", p, width = 4.5, height = 4)
 

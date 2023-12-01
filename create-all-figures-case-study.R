@@ -76,21 +76,21 @@ fit <- get_fit(i) %>% filter(model == 'no-association')
 fit$BIC
 
 p <- expard::plot_fit(fit = get_fit(i), 
-                      title = "DOACs and bleeding", 
+                      title = "DOACs and GI bleeding", 
                       y_range = c(224500, 226000))
 ggsave("results/figure_doacs_bleeding.pdf", p, width = 5, height = 5)
 
-p <- plot_fit_past(i, add_current_use = T, title = "DOACs and bleeding")
+p <- plot_fit_past(i, add_current_use = T, title = "DOACs and GI bleeding")
 ggsave("results/past_figure_doacs_bleeding.pdf", p, width = 4.5, height = 4)
 
 # "results/fit_antibiotics_bleeding.rds"
 i = 5
 
 p <- expard::plot_fit(fit = get_fit(i), 
-                      title = "antibiotics and bleeding")
+                      title = "antibiotics and GI bleeding")
 ggsave("results/figure_antibiotics_bleeding.pdf", p, width = 5, height = 5)
 
-p <- plot_fit_past(i, add_current_use = T, title = "antibiotics and bleeding")
+p <- plot_fit_past(i, add_current_use = T, title = "antibiotics and GI bleeding")
 ggsave("results/past_figure_antibiotics_bleeding.pdf", p, width = 4.5, height = 4)
 
 # "results/fit_psychotics_type2diabetes.rds"
