@@ -1,3 +1,6 @@
+# Process the data on the insurants for the HKK and AOK.
+# The data is not publicly available for privacy reasons
+
 library(dplyr)
 library(readr)
 

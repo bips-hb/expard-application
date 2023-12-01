@@ -1,3 +1,5 @@
+# Process all the data. Results are stored in the results/ folder
+
 library(readr)
 library(dplyr)
 library(lubridate)

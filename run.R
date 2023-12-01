@@ -1,3 +1,5 @@
 source("process-insurant-data.R")
 source("process-data.R")
 source("apply-expard.R")
+source("visual-analysis-fit.R")
+source("create-all-figures-case-study.R")

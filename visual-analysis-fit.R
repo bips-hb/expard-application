@@ -1,3 +1,6 @@
+# Create the BIC plots for the different drug-ADR pairs. Also included are the 
+# files that were not presented in the paper
+
 library(expard)
 library(readr)
 library(stringr)

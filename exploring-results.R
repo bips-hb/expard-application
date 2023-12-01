@@ -1,3 +1,6 @@
+# File in which you can explore all the results, also of the other drug-ADR pairs
+# not presented in the paper
+
 library(expard)
 library(readr)
 library(ggplot2)

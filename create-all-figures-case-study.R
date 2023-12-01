@@ -1,3 +1,5 @@
+# Create all the figures shown in the paper
+
 library(expard)
 library(readr)
 library(ggplot2)
@@ -5,7 +7,6 @@ library(ggplot2)
 get_fit <- function(i) {
   readr::read_rds(fit_filenames[i])
 }
-
 
 plot_fit_past <- function(i, add_current_use = TRUE,
                           x_label = "past parameter (in quarter years)", 
